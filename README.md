@@ -188,6 +188,22 @@ Through this project I learned:
 
 ---
 
+## 📸 Screenshots
+
+### Live Website
+![Live Website](screenshots/live-website.png)
+
+### AWS EC2 Instance
+![EC2](screenshots/ec2-instance.png)
+
+### Deployment Script
+![Deploy Script](screenshots/deploy-script.png)
+
+### Health Check Script
+![Health Check](screenshots/healthcheck.png)
+
+---
+
 ## 🔮 Future Improvements
 
 * Docker Containerization
