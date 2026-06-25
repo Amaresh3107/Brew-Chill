@@ -1,222 +1,205 @@
-# ☕ Brew & Chill
+# ☕ Brew & Chill - Automated CI/CD Deployment
 
-A modern coffee shop landing page deployed on AWS EC2 using Linux, Nginx, GitHub, and Shell Scripting.
+A DevOps project demonstrating an automated CI/CD pipeline for deploying a static website to an AWS EC2 instance using **GitHub Actions**, **Nginx**, and **Shell Scripting**.
+
+The pipeline automatically deploys the latest code whenever changes are pushed to the **main** branch.
+
+---
+
+## 🚀 Live Demo
+
+**Website:** https://brew.amaresh.info
+
+---
 
 ## 📌 Project Overview
 
-Brew & Chill is a responsive static café website built with HTML and CSS and deployed on an AWS EC2 Ubuntu server.
+This project demonstrates how a modern CI/CD pipeline can automate deployments without requiring manual intervention.
 
-The goal of this project was not only to build a website but also to gain hands-on experience with core DevOps concepts such as:
+### Workflow
 
-* Linux Administration
-* Git & GitHub
-* AWS EC2
-* Nginx Web Server
-* Shell Scripting
-* Deployment Automation
-* Basic Server Monitoring
-
----
-
-## 🏗 Architecture
-
+```text
 Developer
-↓
+    │
+    ▼
 GitHub Repository
-↓
-AWS EC2 (Ubuntu)
-↓
+    │
+    ▼
+GitHub Actions
+    │
+    ▼
+SSH Authentication
+    │
+    ▼
+AWS EC2 Instance
+    │
+    ▼
+deploy.sh
+    │
+    ▼
 Nginx Web Server
-↓
-Brew & Chill Website
+    │
+    ▼
+brew.amaresh.info
+```
 
 ---
 
-## 🛠 Tech Stack
+## 🛠️ Tech Stack
 
-### Frontend
-
-* HTML5
-* CSS3
-
-### DevOps & Infrastructure
-
-* Linux (Ubuntu)
-* AWS EC2
-* Nginx
 * Git
 * GitHub
-* Bash Shell Scripting
+* GitHub Actions
+* Linux (Ubuntu)
+* Shell Scripting
+* AWS EC2
+* Nginx
+* SSH
+* Let's Encrypt SSL
+* DNS (Custom Subdomain)
 
 ---
 
-## 🚀 Deployment Process
+## ✨ Features
 
-### 1. Launch EC2 Instance
-
-Created an Ubuntu EC2 instance named:
-
-brew-chill
-
-Configured Security Groups:
-
-* SSH (22)
-* HTTP (80)
-* HTTPS (443)
+* Automated deployment on every push to the `main` branch
+* Secure SSH authentication using SSH Keys
+* Nginx web server configuration
+* Custom domain deployment (`brew.amaresh.info`)
+* HTTPS enabled using Let's Encrypt SSL
+* Automated deployment script
+* Automated health check script
+* Zero manual file copying after initial setup
 
 ---
 
-### 2. Connect to Server
+## 📂 Project Structure
 
-```bash
-ssh -i brew-chill.pem ubuntu@<public-ip>
-```
-
-### 3. Install Nginx
-
-```bash
-sudo apt update
-sudo apt install nginx -y
-```
-
-### 4. Clone Repository
-
-```bash
-git clone https://github.com/Amaresh3107/Brew-Chill.git
-```
-
-### 5. Deploy Website
-
-```bash
-sudo cp index.html /var/www/html/
-sudo cp style.css /var/www/html/
-sudo systemctl restart nginx
+```text
+.
+├── .github/
+│   └── workflows/
+│       └── deploy.yml
+│
+├── css/
+├── js/
+├── images/
+│
+├── deploy.sh
+├── healthcheck.sh
+├── index.html
+└── README.md
 ```
 
 ---
 
-## ⚙️ Deployment Automation
+## ⚙️ CI/CD Pipeline
 
-Created a deployment script to automate website deployment.
+The deployment pipeline performs the following steps automatically:
 
-### deploy.sh
-
-```bash
-#!/bin/bash
-
-echo "Deploying Brew & Chill..."
-
-sudo cp index.html /var/www/html/
-sudo cp style.css /var/www/html/
-
-sudo systemctl restart nginx
-
-echo "Deployment Complete!"
-```
-
-Run:
-
-```bash
-./deploy.sh
-```
+1. Code is pushed to the `main` branch.
+2. GitHub Actions workflow starts.
+3. Repository is checked out.
+4. GitHub connects securely to the EC2 instance using SSH.
+5. Latest code is copied to the web server.
+6. Nginx is restarted.
+7. Health checks are executed.
+8. Website is updated automatically.
 
 ---
 
-## 📊 Server Health Monitoring
+## 📜 Deployment Script
 
-Created a health monitoring script to check:
+The deployment script performs tasks such as:
 
-* Hostname
+* Creating backups
+* Copying latest files
+* Restarting Nginx
+* Verifying HTTP response
+* Printing deployment status
+
+---
+
+## ❤️ Health Check Script
+
+The health check script validates:
+
+* Nginx status
+* HTTP Status Code
 * Disk Usage
 * Memory Usage
-* CPU Load
-* Nginx Status
-* Public IP Address
+* Server Uptime
 
-### healthcheck.sh
-
-Run:
-
-```bash
-./healthcheck.sh
-```
-
-Sample Output:
-
-```bash
-Hostname: ip-172-31-38-103
-
-Disk Usage: 39%
-
-Memory Usage:
-908 MB Total
-337 MB Used
-
-CPU Load:
-0.00 0.00 0.00
-
-Nginx: Running
-
-Public IP:
-35.xxx.xxx.xxx
-```
+This ensures the deployment completed successfully.
 
 ---
 
-## 📸 Project Screenshots
+## 🔐 Security
 
-* Live Brew & Chill Website
-* AWS EC2 Instance
-* Nginx Installation
-* Deployment Automation Script
-* Health Monitoring Script
-* GitHub Repository
-
----
-
-## 🎯 Key Learnings
-
-Through this project I learned:
-
-* Linux server management
-* Hosting websites on AWS EC2
-* Configuring Nginx
-* Using Git and GitHub workflows
-* Writing shell scripts for automation
-* Monitoring server health
-* Basic DevOps deployment practices
+* SSH Key Authentication
+* GitHub Secrets for sensitive credentials
+* HTTPS using Let's Encrypt SSL
+* Custom Domain Configuration
+* Secure Nginx Configuration
 
 ---
 
 ## 📸 Screenshots
 
-### Live Website
-![Live Website](screenshots/live-website.png)
+### Architecture
 
-### AWS EC2 Instance
-![EC2](screenshots/ec2-instance.png)
-
-### Deployment Script
-![Deploy Script](screenshots/deploy-script.png)
-
-### Health Check Script
-![Health Check](screenshots/healthcheck.png)
+> Add your architecture diagram here.
 
 ---
 
-## 🔮 Future Improvements
+### GitHub Actions
 
-* Docker Containerization
-* Custom Domain
-* HTTPS SSL Configuration
-* CI/CD using GitHub Actions
-* Infrastructure as Code using Terraform
+> Add successful workflow screenshot here.
+
+---
+
+### Deployment Output
+
+> Add terminal screenshot showing successful deployment.
+
+---
+
+### Live Website
+
+> Add website screenshot hosted on **https://brew.amaresh.info**
+
+---
+
+## 🎯 Skills Demonstrated
+
+* CI/CD
+* GitHub Actions
+* AWS EC2
+* Linux Administration
+* Shell Scripting
+* SSH
+* Nginx
+* HTTPS & SSL
+* DNS Management
+* Automation
+
+---
+
+## 📈 Future Improvements
+
+* Dockerize the application
+* Add rollback support
+* Integrate monitoring
+* Add deployment notifications
+* Configure Infrastructure as Code using Terraform
+* Deploy using Kubernetes
 
 ---
 
 ## 👨‍💻 Author
 
-Amaresh Kumar
+**Amaresh Kumar**
 
-Learning DevOps through hands-on projects as part of the #90DaysOfDevOps challenge.
- Speacial Thanks to #trainwithshubham
+GitHub: https://github.com/Amaresh3107
+
+LinkedIn: https://www.linkedin.com/in/amaresh3107
