@@ -147,26 +147,22 @@ This ensures the deployment completed successfully.
 ## 📸 Screenshots
 
 ### Architecture
-
-> Add your architecture diagram here.
+![Architecture](assets/architecture.png)
 
 ---
 
 ### GitHub Actions
-
-> Add successful workflow screenshot here.
+![GitHub Actions](assets/github-actions.png)
 
 ---
 
 ### Deployment Output
-
-> Add terminal screenshot showing successful deployment.
+![Deployment](assets/deploy-output.png)
 
 ---
 
 ### Live Website
-
-> Add website screenshot hosted on **https://brew.amaresh.info**
+![Website](assets/live-website.png)
 
 ---
 
