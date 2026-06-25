@@ -1,6 +1,6 @@
 # ☕ Brew & Chill - Automated CI/CD Deployment
 
-A DevOps project demonstrating an automated CI/CD pipeline for deploying a static website to an AWS EC2 instance using **GitHub Actions**, **Nginx**, and **Shell Scripting**.
+A DevOps project demonstrating an automated CI/CD pipeline for deploying a website to an AWS EC2 instance using **GitHub Actions**, **Nginx**, and **Shell Scripting**.
 
 The pipeline automatically deploys the latest code whenever changes are pushed to the **main** branch.
 
@@ -83,7 +83,7 @@ brew.amaresh.info
 │
 ├── css/
 ├── js/
-├── images/
+├── assets/
 │
 ├── deploy.sh
 ├── healthcheck.sh
